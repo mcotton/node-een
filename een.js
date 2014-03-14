@@ -54,3 +54,32 @@ exports.getImage = function(opts, success, failure) {
     )
 
 }
+
+
+exports.getPrevImage = function(opts, success, failure) {
+
+}
+
+exports.getNextImage = function(opts, success, failure) {
+
+}
+
+exports.getAfterImage = function(opts, success, failure) {
+
+}
+
+exports.getImageList = function(opts, success, failure) {
+
+}
+
+exports.getDeviceList = function(opts, success, failure) {
+
+}
+
+exports.startPolling = function(opts, success, failure) {
+
+}
+
+exports.continuePolling = function(opts, success, failure) {
+
+}
