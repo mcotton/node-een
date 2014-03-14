@@ -35,37 +35,92 @@ exports.login = function(opts, success, failure) {
                 if ( typeof failure === 'function') failure(res.statusCode);
             }
         }
-    })
+    )
 }
 
 // /asset/asset/image.jpeg?c=10074f79;t=20140313234639.472;q=high;a=all
 exports.getImage = function(opts, success, failure) {
-    request.get({
-            url: host + '/asset/asset/image.jpeg',
-            qs: opts,
-            jar: cookie_jar
-        },
-        function (err, res, body) {
-            if (err) { console.log(err, res, body) }
-            if (!err && res.statusCode == 200) {
-
-            }
-        }
-    )
+    var img_url = [   host,
+                    '/asset/asset/image.jpeg?c=', opts.c,
+                    ';t=', opts.ts || 'now',
+                    ';q=', opts.q || 'high',
+                    ';a=', opts.a || 'all'
+                    ].join('')
+    console.log('Requesting image: ' + img_url)
+    return  request.get({
+                    url: img_url,
+                    jar: cookie_jar
+                },
+                function (err, res, body) {
+                    if (err) { return err }
+                    if (!err && res.statusCode == 200) {}
+                    return res
+                }
+            )
 
 }
 
 
 exports.getPrevImage = function(opts, success, failure) {
+    var img_url = [   host,
+                    '/asset/prev/image.jpeg?c=', opts.c,
+                    ';t=', opts.ts || 'now',
+                    ';q=', opts.q || 'high',
+                    ';a=', opts.a || 'all'
+                    ].join('')
+    console.log('Requesting previous image: ' + img_url)
+    return  request.get({
+                    url: img_url,
+                    jar: cookie_jar
+                },
+                function (err, res, body) {
+                    if (err) { return err }
+                    if (!err && res.statusCode == 200) {}
+                    return res
+                }
+            )
 
 }
 
 exports.getNextImage = function(opts, success, failure) {
+    var img_url = [   host,
+                    '/asset/next/image.jpeg?c=', opts.c,
+                    ';t=', opts.ts || 'now',
+                    ';q=', opts.q || 'high',
+                    ';a=', opts.a || 'all'
+                    ].join('')
+    console.log('Requesting next image: ' + img_url)
+    return  request.get({
+                    url: img_url,
+                    jar: cookie_jar
+                },
+                function (err, res, body) {
+                    if (err) { return err }
+                    if (!err && res.statusCode == 200) {}
+                    return res
+                }
+            )
 
 }
 
 exports.getAfterImage = function(opts, success, failure) {
-
+var img_url = [   host,
+                '/asset/after/image.jpeg?c=', opts.c,
+                ';t=', opts.ts || 'now',
+                ';q=', opts.q || 'high',
+                ';a=', opts.a || 'all'
+                ].join('')
+console.log('Requesting after image: ' + img_url)
+return  request.get({
+                url: img_url,
+                jar: cookie_jar
+            },
+            function (err, res, body) {
+                if (err) { return err }
+                if (!err && res.statusCode == 200) {}
+                return res
+            }
+        )
 }
 
 exports.getImageList = function(opts, success, failure) {
