@@ -127,7 +127,8 @@ exports.getVideo = function(opts, success, failure) {
                     '/asset/play/video.mp4?c=', opts.c,
                     ';T=', opts.ts || 'now',
                     ';e=', opts.e || 'event',
-                    ';q=', opts.a || 'low'
+                    ';q=', opts.a || 'low',
+                    ';d=', opts,d || '1'	//download video by default
                     ].join('')
     console.log('Requesting video: ' + src_url)
     return  request.get({
