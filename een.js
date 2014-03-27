@@ -161,6 +161,11 @@ exports.continuePolling = function(opts, success, failure) {
 
 }
 
+exports.addAnnotations = function(opts, success, failure) {
+
+};
+
+
 exports.DtoS = function(epoch_time) {
     var yy, mm, dd, hr, mn, sc, ms, timecode, jstime;
         jstime = new Date(epoch_time);
