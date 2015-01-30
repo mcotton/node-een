@@ -149,6 +149,35 @@ exports.getImageList = function(opts, success, failure) {
 
 };
 
+exports.getVideoList = function(opts, success, failure) {
+    var img_url = [   host,
+                    '/asset/list/video?c=', opts.c,
+                    ';start_timestamp=', opts.start || 'now',
+                    ';end_timestamp=', opts.end || 'now',
+                    ';q=', opts.q || 'high',
+                    ';a=', opts.a || 'all'
+                    ].join('')
+    console.log('Requesting list of videos: ' + img_url)
+    return  request.get({
+                    url: img_url,
+                    jar: cookie_jar
+                },
+                function (err, res, body) {
+                    if (err) { return err }
+                    if (!err && res.statusCode == 200) {
+                        //console.log('Dumping output from getVideoList before calling success')
+                        //console.log(body)
+                        //console.log(res.statusCode)
+                        if(success) {
+                            success(res, body) 
+                        }
+                    }
+                    return res
+                }
+            )
+ 
+};
+
 exports.getDeviceList = function(opts, success, failure) {
 
 };
